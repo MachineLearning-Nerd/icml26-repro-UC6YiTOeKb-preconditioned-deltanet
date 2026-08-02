@@ -1,0 +1,16 @@
+{
+  "seeds": [
+    17,
+    29,
+    43,
+    71,
+    101
+  ],
+  "d": 6,
+  "value_dim": 4,
+  "steps": 30,
+  "dtype": "float64",
+  "source": "Theorem 3.1/Eq. atk_update; pinned claim1_method_excerpt.tex",
+  "compute": "local CPU",
+  "started_unix": 1785659525.910149
+}

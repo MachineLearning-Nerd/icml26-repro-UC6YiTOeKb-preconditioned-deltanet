@@ -1,25 +1,32 @@
 {
   "schema_version": 1,
   "openreview_id": "UC6YiTOeKb",
-  "phase": "claim_1_protocol_initialized",
-  "next_action": "launch_claim_1_direct_exact_preconditioning_reproduction",
+  "phase": "claim_1_attempt_1_exact_preconditioning_toy_complete",
+  "next_action": "independent_claim_1_toy_review_then_claim_2",
   "active_run_ids": [],
   "completed_milestones": [
     "live_duplicate_gate",
     "live_contract_saved",
     "source_archive_and_pdf_pinned",
-    "claim_1_protocol_initialized"
+    "claim_1_protocol_initialized",
+    "claim_1_attempt_1_exact_preconditioning_toy"
   ],
   "failed_attempts": [],
   "claim_attempt_counts": {
-    "1": 0,
+    "1": 1,
     "2": 0,
     "3": 0,
     "4": 0,
     "5": 0
   },
-  "last_checkpoint": "2026-08-02T06:30:41Z",
-  "last_known_git_commit": "8c0995d95f25a08d36d014b21f0c3556bfc2354a",
+  "last_checkpoint": "2026-08-02T08:30:00Z",
+  "last_known_git_commit": "PENDING_COMMIT",
   "publication_allowed": false,
-  "compute_policy": "local CPU/local GPU only; no HF cpu-upgrade, Jobs, paid, or remote compute"
+  "compute_policy": "local CPU/local GPU only; no HF cpu-upgrade, Jobs, paid, or remote compute",
+  "claim_1_outcome": {
+    "verdict": "toy",
+    "scope": "five-seed finite clean-room float64 PDN/PLA recurrence fixture; not a general proof",
+    "evidence": "outputs/claim1_exact_preconditioning/summary.json",
+    "negative_control": "diagonal preconditioner minimum state residual 0.5055056483628361"
+  }
 }

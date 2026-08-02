@@ -1,0 +1,11 @@
+seed,d,value_dim,steps,approximate,max_state_residual,max_output_residual,kind,kind
+17,6,4,30,False,5.551115123125783e-16,2.6645352591003757e-15,exact,exact
+29,6,4,30,False,6.661338147750939e-16,1.7763568394002505e-15,exact,exact
+43,6,4,30,False,6.661338147750939e-16,8.881784197001252e-16,exact,exact
+71,6,4,30,False,4.996003610813204e-16,6.661338147750939e-16,exact,exact
+101,6,4,30,False,7.216449660063518e-16,1.7763568394002505e-15,exact,exact
+17,6,4,30,True,0.5865499597939753,1.0493642971320911,diagonal_approx_control,diagonal_approx_control
+29,6,4,30,True,0.7165066509908788,1.4057253494865973,diagonal_approx_control,diagonal_approx_control
+43,6,4,30,True,1.0573776816487954,1.3953850574284745,diagonal_approx_control,diagonal_approx_control
+71,6,4,30,True,0.5055056483628361,1.1287708741701141,diagonal_approx_control,diagonal_approx_control
+101,6,4,30,True,0.9669304043110643,2.5804698801779384,diagonal_approx_control,diagonal_approx_control
