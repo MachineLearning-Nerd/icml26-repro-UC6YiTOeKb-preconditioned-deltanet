@@ -6,7 +6,7 @@ Contract manifest: contract/contract_manifest.json
 Source paper/version: arXiv:2604.21100
 Official code/data/model pins: no source-faithful executable pin established at initialization
 Compute policy: local CPU and local GPU only; no HF cpu-upgrade, Jobs, paid, or remote compute
-GitHub repository: pending creation
+GitHub repository: https://github.com/MachineLearning-Nerd/icml26-repro-UC6YiTOeKb-preconditioned-deltanet
 Current phase: claim_1_protocol_initialized
 Per-claim state: C1 protocol initialized; C2-C5 not started
 Publication status: not published
