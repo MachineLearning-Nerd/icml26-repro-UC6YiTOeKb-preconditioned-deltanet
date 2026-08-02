@@ -1,0 +1,22 @@
+[
+  {
+    "text": "Theorem 3.1 establishes that the Preconditioned DeltaNet (PDN) recursion satisfies S_t = C_t P_t for all t, formally deriving the equivalence between linear attention and the delta rule under exact preconditioning (Section 3.1, Theorem 3.1).",
+    "status": "unverified"
+  },
+  {
+    "text": "A diagonal approximation to the key Gram matrix (Eq. 7) enables efficient preconditioned variants of DeltaNet, GDN, and KDA with chunkwise-parallel algorithms, incurring only about 10% throughput overhead relative to the base models (Section 3.3, Figure 3).",
+    "status": "unverified"
+  },
+  {
+    "text": "At 340M parameters on SlimPajama, PGDN attains average zero-shot commonsense accuracy of 49.96% versus 48.86% for GDN, and average in-context recall accuracy of 26.17% versus 24.77% (Table 1).",
+    "status": "unverified"
+  },
+  {
+    "text": "At 1B parameters, PGDN attains average zero-shot commonsense accuracy of 56.38% versus 55.44% for GDN, and average in-context recall accuracy of 34.99% versus 33.87% (Table 1).",
+    "status": "unverified"
+  },
+  {
+    "text": "PGDN maintains or improves performance over baselines on the MQAR synthetic multi-query associative recall benchmark across varying sequence lengths, and shows improvements on the S-NIAH benchmark (Figures 5 and 6).",
+    "status": "unverified"
+  }
+]

@@ -1,0 +1,66 @@
+\setlength{\parskip}{0pt}
+\abovedisplayskip=4pt
+\belowdisplayskip=4pt
+\abovedisplayshortskip=1pt
+\belowdisplayshortskip=1pt
+\begin{align*}
+\mat{P}^{\mathrm{norm}}_{t-1} \;:=\; \frac{\mat{P}_{t-1}}{1+\bb{k}_t^\top \mat{P}_{t-1}\bb{k}_t},
+\qquad
+\tilde{\bb{k}}_t \;:=\; \mat{P}^{\mathrm{norm}}_{t-1}\bb{k}_t 
+\end{align*}
+}%
+Then the modified DeltaNet update can be written as a preconditioned SGD step:
+\begin{equation}
+\label{eq:atk_update}
+\begin{aligned}
+\mat{S}_t
+&=\mat{S}_{t-1}
+-\Big(\underbrace{(\mat{S}_{t-1}\bb{k}_t-\bb{v}_t)\bb{k}_t^\top}_{\nabla_{\mat{S}} L_t(\mat{S}_{t-1})}\Big)\mat{P}^{\mathrm{norm}}_{t-1}\\
+&=\mat{S}_{t-1}
++(\bb{v}_t-\mat{S}_{t-1}\bb{k}_t)\,
+\underbrace{\big(\mat{P}^{\mathrm{norm}}_{t-1}\bb{k}_t\big)^\top}_{\text{``apply-to-key"(\textbf{ATK})}}\\
+&=\mat{S}_{t-1}+(\bb{v}_t-\mat{S}_{t-1}\bb{k}_t)\tilde{\bb{k}}_t^\top,
+\qquad
+\bb{o}_t=\mat{S}_t\bb{q}_t.
+\end{aligned}
+\end{equation}
+We claim that this preconditioned DeltaNet recurrence recovers the exact least squares solution (see Theorem~\ref{thm:atk_atq_equiv}). In practice, we realize this by introducing a second key, the write key, $\tilde{\bb{k}}_t$, in addition to the standard read key, $\bb{k}_t$. This differs from the standard case in DeltaNet, where both keys are the same. We refer to the application of an arbitrary preconditioner to the write key as \textbf{ATK} (apply-to-key). 
+
+We formalize this equivalence between preconditioned linear attention (\textbf{PLA}) and preconditioned DeltaNet (\textbf{PDN}) in the case where the preconditioner is the inverse key Gram as follows:
+
+\begin{theorem}
+\label{thm:atk_atq_equiv}
+Let $\mat{C}_t,\mat{G}_t,\mat{P}_t$ be defined as above and initialize $\mat{S}_0=\bb{0}$.
+Then the PDN recursion Eq.~\eqref{eq:atk_update} satisfies $\mat{S}_t=\mat{C}_t\mat{P}_t$ for all $t$.
+Consequently, for all queries $\bb{q}_t$, the outputs match:
+\[
+\bb{o}_t^{\mathrm{PDN}}=\mat{S}_t\bb{q}_t=(\mat{C}_t\mat{P}_t)\bb{q}_t=\mat{C}_t(\mat{P}_t\bb{q}_t)=\bb{o}_t^{\mathrm{PLA}}.
+\]
+\end{theorem}
+The proof (see Appendix~\ref{app:theory:atk-atq-equivalence}) follows from Sherman--Morrison applied to $\mat{P}_t=(\mat{G}_{t-1}+\bb{k}_t\bb{k}_t^\top)^{-1}$.
+
+% Overall, linear attention and DeltaNet correspond to offline (batch) and online (streaming) solvers in the TTR framework, and their solutions
+% coincide when the key Gram is used as the preconditioner, realized either at read time (ATQ) or write time (ATK).
+
+
+\subsection{Preconditioned chunkwise parallel forms} 
+Recall that linear attention and DeltaNet admit chunkwise parallel forms that enable efficient training. Suppose we have access to the per-token within-chunk preconditioner $\mat{P}_{[i]}$; then we can construct a chunkwise parallel form for PLA as follows. For a complete derivation, refer to Appendix~\ref{app:chunkwise}. 
+{%
+\setlength{\abovedisplayskip}{4pt}
+\setlength{\belowdisplayskip}{4pt}
+\setlength{\abovedisplayshortskip}{1pt}
+\setlength{\belowdisplayshortskip}{1pt}
+\[
+\begin{aligned}
+&\mat{S}_{[i+1]} \;=\; \mat{S}_{[i]} + \mat{V}_{[i]}^\top \mat{K}_{[i]},\\
+&\mat{O}_{[i]} \;=\; \underbrace{{\color{blue}\tilde{\mat{Q}}}_{[i]}\mat{S}_{[i]}^\top}_{\mathclap{\text{inter-chunk output}}}
+\;+\;
+\underbrace{\Big(\big({\color{blue}\tilde{\mat{Q}}}_{[i]}\mat{K}_{[i]}^\top\big)\odot \mat{M}\Big)\mat{V}_{[i]}}_{\mathclap{\text{intra-chunk output}}}.
+\end{aligned}
+\]
+}%
+Here we leverage the ATQ realization described earlier to transform $\mat{Q}_{[i]} \to \mat{Q}_{[i]} \mat{P}_{[i]}^{\top} =\color{blue}\tilde{\mat{Q}}_{[i]}$. 
+
+Analogously, for PDN, we can use the ATK realization on the write key to construct the following chunkwise parallel form. Again, for a complete derivation, refer to Appendix~\ref{app:chunkwise}.
+{%
+\setlength{\parskip}{0pt}

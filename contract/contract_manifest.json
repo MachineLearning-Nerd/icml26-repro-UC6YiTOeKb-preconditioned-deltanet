@@ -1,0 +1,21 @@
+{
+  "retrieved_at_utc": "2026-08-02T06:32:09.793497+00:00",
+  "openreview_id": "UC6YiTOeKb",
+  "submission_number": 29325,
+  "title": "Preconditioned DeltaNet: Curvature-aware Sequence Modeling for Linear Recurrences",
+  "claim_count": 5,
+  "maximum_points": 10,
+  "source_urls": {
+    "challenge_readme": "https://huggingface.co/datasets/ICML-2026-agent-repro/challenge/resolve/main/README.md",
+    "index": "https://huggingface.co/datasets/ICML-2026-agent-repro/challenge/resolve/main/index.json",
+    "claims": "https://icml-2026-agent-repro-challenge.static.hf.space/claims.json",
+    "claims_anchored": "https://icml-2026-agent-repro-challenge.static.hf.space/claims_anchored.json"
+  },
+  "sha256": {
+    "metadata.json": "d102501b0579eafd5bc272526a493a61cdcb8744b8b2e16da7f6b8305587114a",
+    "live_claims.json": "a8243b7b69bb160d3033241e51ae797bcc9ce37fa3990b0bb57909c258c393d0",
+    "challenge_readme.md": "027f66e6da758c4a0d75fff6c9298e5322dde64d21a97d33e4367e42c3a421c5",
+    "claims.json": "6f0984c875e7bc9507a9d3cf738621d22db16bc4c244ed7ceab86d60ecd14e01",
+    "claims_anchored.json": "7c0373fbbfb98b5acdc2c0ac122d9d81431bd6b42dda76fa36a91b49ec4b7825"
+  }
+}
